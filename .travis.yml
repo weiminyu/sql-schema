@@ -1,0 +1,24 @@
+language: java
+install: true
+jdk:
+  - openjdk8
+
+services:
+  - docker
+
+# Caching options suggested by a random article.
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -f $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+env:
+  # Disable fancy status information (looks bad on travis and exceeds logfile
+  # quota)
+  TERM=dumb
+
+script: ./gradlew build

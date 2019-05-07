@@ -1,0 +1,40 @@
+plugins {
+    id 'java-library'
+    id 'nebula.lint' version '10.4.2'
+    id 'com.diffplug.gradle.spotless' version '3.18.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply from: 'spotless.gradle'
+
+gradleLint.rules = [
+        // Checks if Gradle wrapper is up-to-date
+        'archaic-wrapper',
+        // Checks for indirect dependencies with dynamic version spec. Best
+        // practice calls for declaring them with specific versions.
+        'undeclared-dependency',
+        'unused-dependency'
+        // TODO(weiminyu): enable more dependency checks
+]
+
+dependencies {
+    compile 'org.hibernate:hibernate-core:5.4.2.Final'
+    compile 'javax.persistence:javax.persistence-api:2.2'
+
+    runtimeOnly 'org.postgresql:postgresql:42.2.5'
+
+    // Used by native hibernate initialization
+    compile 'org.reflections:reflections:0.9.11'
+
+    testCompile 'com.google.guava:guava:27.1-jre'
+
+    // testCompile 'com.google.truth.extensions:truth-java8-extension:0.44'
+    testCompile 'com.google.truth:truth:0.44'
+    testCompile 'junit:junit:4.13-beta-2'
+    testCompile 'org.testcontainers:testcontainers:1.10.6'
+    testCompile 'org.testcontainers:jdbc:1.10.6'
+    testCompile 'org.testcontainers:postgresql:1.10.6'
+}

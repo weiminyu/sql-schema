@@ -1,0 +1,14 @@
+spotless {
+    java {
+        googleJavaFormat('1.7')
+    }
+    format 'misc', {
+        target '**/*.gradle', '**/*.md', '**/.gitignore', '**/*.sql'
+
+        targetExclude 'src/test/resources/**/*.sql'
+
+        trimTrailingWhitespace()
+        indentWithSpaces(2)
+        endWithNewline()
+    }
+}
