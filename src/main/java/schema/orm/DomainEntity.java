@@ -30,4 +30,11 @@ public class DomainEntity {
   public void setFullyQualifiedDomainName(String fullyQualifiedDomainName) {
     this.fullyQualifiedDomainName = fullyQualifiedDomainName;
   }
+
+  public static DomainEntity create(String eppRepoId, String fullyQualifiedDomainName) {
+    DomainEntity domainEntity = new DomainEntity();
+    domainEntity.setEppRepoId(eppRepoId);
+    domainEntity.setFullyQualifiedDomainName(fullyQualifiedDomainName);
+    return domainEntity;
+  }
 }
