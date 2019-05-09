@@ -10,6 +10,7 @@ import javax.persistence.Table;
 public class DomainEntity {
   private String eppRepoId;
   private String fullyQualifiedDomainName;
+  private String tld;
 
   /** Default constructor required by Hibernate. */
   DomainEntity() {}
@@ -36,5 +37,13 @@ public class DomainEntity {
     domainEntity.setEppRepoId(eppRepoId);
     domainEntity.setFullyQualifiedDomainName(fullyQualifiedDomainName);
     return domainEntity;
+  }
+
+  public String getTld() {
+    return tld;
+  }
+
+  public void setTld(String tld) {
+    this.tld = tld;
   }
 }
